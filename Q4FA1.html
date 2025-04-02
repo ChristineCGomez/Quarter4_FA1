@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bantay Hayop Davao - Charity Sign-Up Form</title>
+    <link rel="stylesheet" href="style7.css">
+</head>
+<body>
+    <div class="logo">
+    <img src="images.png" alt="logo">
+</div>
+    <div class="container">
+        <h1>Support Bantay Hayop Davao</h1>
+        <p>Bantay Hayop Davao is dedicated to rescuing and protecting animals in need. Here’s why you should support us:</p>
+        <ul style="text-align: left;">
+            <li>We rescue abandoned and abused animals.</li>
+            <li>Your support helps provide medical care and shelter.</li>
+            <li>Join us in promoting responsible pet ownership and animal welfare.</li>
+        </ul>
+        <form id="charityForm">
+            <div class="form-group">
+                <label for="firstName">First Name:</label>
+                <input type="text" id="firstName" name="firstName" required>
+                <span class="error" id="firstNameError">This field is required.</span>
+            </div>
+            <div class="form-group">
+                <label for="lastName">Last Name:</label>
+                <input type="text" id="lastName" name="lastName" required>
+                <span class="error" id="lastNameError">This field is required.</span>
+            </div>
+            <div class="form-group">
+                <label>Sex:</label>
+                <input type="radio" name="sex" value="male" required> Male
+                <input type="radio" name="sex" value="female"> Female
+                <input type="radio" name="sex" value="preferNotToSay"> Prefer not to say
+                <span class="error" id="sexError">Please select an option.</span>
+            </div>
+            <div class="form-group">
+                <label for="email">Email Address:</label>
+                <input type="email" id="email" name="email" required>
+                <span class="error" id="emailError">This field is required.</span>
+            </div>
+            <button type="submit">Submit</button>
+            <button type="reset">Reset</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById("charityForm").addEventListener("submit", function(event) {
+            let valid = true;
+            
+            const firstName = document.getElementById("firstName");
+            const lastName = document.getElementById("lastName");
+            const sex = document.querySelector("input[name='sex']:checked");
+            const email = document.getElementById("email");
+
+            document.getElementById("firstNameError").style.display = firstName.value ? "none" : "block";
+            document.getElementById("lastNameError").style.display = lastName.value ? "none" : "block";
+            document.getElementById("sexError").style.display = sex ? "none" : "block";
+            document.getElementById("emailError").style.display = email.value ? "none" : "block";
+            
+            if (!firstName.value || !lastName.value || !sex || !email.value) {
+                valid = false;
+            }
+            
+            if (!valid) {
+                event.preventDefault();
+            }
+        });
+    </script>
+</body>
+</html>
